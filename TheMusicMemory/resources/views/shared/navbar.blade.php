@@ -4,7 +4,7 @@
 	<nav class="gv-nav container-xxl" aria-label="Navigation principale">
 
 		{{-- Logo --}}
-		<a class="gv-brand" href="{{ url('/admin/account') }}" aria-label="The Music Memory, accueil">
+		<a class="gv-brand" href="{{ route('view_account') }}" aria-label="The Music Memory, accueil">
 			<svg class="gv-disc" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
 				<circle class="gv-disc__plate" cx="16" cy="16" r="15" />
 				<circle class="gv-disc__groove" cx="16" cy="16" r="11.5" />

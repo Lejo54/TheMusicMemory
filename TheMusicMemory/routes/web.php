@@ -26,6 +26,6 @@ Route::prefix('admin')->middleware(AuthenticateMyUser::class)->group(function ()
 	Route::view('/settings','settings')->name('view_settings');
 
 	Route::post('/changepassword', [UserController::class, 'updatePassword'])->name('user_changepassword');
-	Route::get('/deleteuser', [UserController::class, 'delete'])->name('user_deleteuser');
+	Route::delete('/deleteuser', [UserController::class, 'delete'])->name('user_deleteuser');
 	Route::post('/signout', [UserController::class, 'disconnect'])->name('user_signout');
 });
