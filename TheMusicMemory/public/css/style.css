@@ -15,7 +15,7 @@
     --gv-text: #f7ead6; /* texte principal (crème) */
     --gv-muted: #b8aa9b; /* texte secondaire */
 
-    --gv-primary: var(--gv-orange); /* action principale, état actif */
+    --gv-primary: var(--gv-peach); /* action principale, état actif */
     --gv-primary-hover: #ff834d;
     --gv-primary-press: #e0561b;
     --gv-primary-ink: #1f0d05; /* texte posé SUR l'orange */

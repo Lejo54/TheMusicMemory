@@ -9,13 +9,13 @@
 		<div class="col-md-6">
 			<div class="gv-card h-100">
 				<h2 class="gv-card__title">Changer le mot de passe</h2>
-				<form action="{{ route('user_changepassword') }} " method="post" class="d-flex flex-wrap gap-2">
-					@csrf
-					<label for="newpassword">Nouveau mot de passe</label> <input type="password" id="newpassword"
-						name="newpassword" required>
-					<label for="confirmpassword">Confirmer le mot de passe</label><input type="password"
-						id="confirmpassword" name="confirmpassword" required>
-					<input type="submit" value="Change my password" class="btn btn-outline-secondary">
+				<br action="{{ route('user_changepassword') }} " method="post" class="d-flex flex-wrap gap-2">
+				@csrf
+				<label for="newpassword">Nouveau mot de passe</label> <input type="password" id="newpassword"
+					name="newpassword" required></br>
+				<label for="confirmpassword">Confirmer le mot de passe</label><input type="password" id="confirmpassword"
+					name="confirmpassword" required></br>
+				<input type="submit" value="Change my password" class="btn btn-outline-secondary">
 				</form>
 			</div>
 		</div>

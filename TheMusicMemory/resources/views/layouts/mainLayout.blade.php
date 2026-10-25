@@ -8,11 +8,13 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Instrument+Sans:wght@400;500;600&display=swap"
+		rel="stylesheet">
 
 	{{-- Bootstrap + feuille de style surcharge --}}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	@stack('head')
 </head>
 
 <body>
@@ -30,6 +32,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="{{ asset('js/app.js') }}"></script>
+	@stack('scripts')
 </body>
 
 </html>
