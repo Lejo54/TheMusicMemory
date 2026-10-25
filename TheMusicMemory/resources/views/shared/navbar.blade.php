@@ -18,8 +18,8 @@
 
 		<form class="gv-search" role="search" action="#" method="get">
 			<label class="visually-hidden" for="gv-q">Rechercher</label>
-			<svg class="gv-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+			<svg class="gv-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+				stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
 				<circle cx="11" cy="11" r="7" />
 				<path d="m20 20-3.5-3.5" />
 			</svg>
@@ -28,11 +28,10 @@
 			<kbd class="gv-kbd d-none d-md-inline" aria-hidden="true">/</kbd>
 		</form>
 
-		{{--  Utilisateur --}}
+		{{-- Utilisateur --}}
 		<div class="gv-user dropdown">
 			@if ($user)
-				<button class="gv-user__btn dropdown-toggle" type="button"
-					data-bs-toggle="dropdown" aria-expanded="false"
+				<button class="gv-user__btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
 					aria-label="Menu du compte de {{ $user->login }}">
 					<span class="gv-avatar" aria-hidden="true">{{ mb_strtoupper(mb_substr($user->login, 0, 1)) }}</span>
 					<span class="gv-user__name d-none d-sm-inline">{{ $user->login }}</span>
@@ -40,7 +39,9 @@
 				<ul class="dropdown-menu dropdown-menu-end">
 					<li><a class="dropdown-item" href="{{ route('view_account') }}">Ma collection</a></li>
 					<li><a class="dropdown-item" href="{{ route('view_settings') }}">Paramètres</a></li>
-					<li><hr class="dropdown-divider"></li>
+					<li>
+						<hr class="dropdown-divider">
+					</li>
 					<li>
 						{{-- Déconnexion en POST --}}
 						<form method="POST" action="{{ route('user_signout') }}">

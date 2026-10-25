@@ -6,22 +6,21 @@
 
 	<header class="mb-4">
 		<h1 class="gv-page-title">Collection de {{ request()->user()->login }}</h1>
-		<p class="gv-subtle mb-0">Tes albums, tes musiques, ta wishlist et tes amis.</p>
 	</header>
 
 	<ul class="nav gv-tabs mb-5">
 		<li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="#">Albums</a>
+			<a class="nav-link active" aria-current="page" href="{{ route('view_account') }}">Albums</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Musiques</a>
+			<a class="nav-link" href="{{ route('view_songs') }}">Musiques</a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Wishlist</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Amis</a>
-		</li>
-	</ul>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('view_wishlist') }}">Wishlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('view_friends') }}">Amis</a>
+        </li>
+    </ul>
 
 @endsection
