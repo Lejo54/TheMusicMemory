@@ -1,0 +1,565 @@
+:root {
+	/* Palette brute : les 7 bandes de l'image */
+	--gv-purple:  #59194d;
+	--gv-magenta: #ac224b;
+	--gv-orange:  #f96a2e;
+	--gv-peach:   #efa86c;
+	--gv-sage:    #70a99b;
+	--gv-teal:    #518587;
+	--gv-deep:    #2a5e68;
+
+	/* Rôles : on utilise ces noms dans les pages, pas la palette brute */
+	--gv-bg:        #232021;   /* fond de page (charbon) */
+	--gv-surface:   #2d2829;   /* cartes, champs, menus */
+	--gv-surface-2: #3b3435;   /* survols, surfaces surélevées */
+	--gv-text:      #f7ead6;   /* texte principal (crème) */
+	--gv-muted:     #b8aa9b;   /* texte secondaire */
+
+	--gv-primary:       var(--gv-orange);   /* action principale, état actif */
+	--gv-primary-hover: #ff834d;
+	--gv-primary-press: #e0561b;
+	--gv-primary-ink:   #1f0d05;            /* texte posé SUR l'orange */
+
+	--gv-accent:     var(--gv-magenta);     /* avatar, étiquette du disque */
+	--gv-accent-ink: #fff4e3;               /* texte posé SUR le magenta */
+
+	--gv-link:       var(--gv-peach);
+	--gv-link-hover: #ffc48d;
+
+	--gv-danger:  #ff6b8a;                  /* actions destructives uniquement */
+	--gv-success: var(--gv-sage);
+
+	--gv-line:        rgba(247, 234, 214, .16);   /* séparateurs discrets */
+	--gv-line-strong: rgba(247, 234, 214, .40);   /* bordures de composants */
+
+	/* Bandes 70s : ordre de l'image, de haut en bas */
+	--gv-stripe-h: 14px;
+	--gv-stripes: linear-gradient(to bottom,
+		var(--gv-purple)  0       14.286%,
+		var(--gv-magenta) 14.286% 28.571%,
+		var(--gv-orange)  28.571% 42.857%,
+		var(--gv-peach)   42.857% 57.143%,
+		var(--gv-sage)    57.143% 71.429%,
+		var(--gv-teal)    71.429% 85.714%,
+		var(--gv-deep)    85.714% 100%);
+
+	/* Fond d'écran : 0 = image nue, 1 = image masquée */
+	--gv-veil: .6;
+
+	/* Typographie */
+	--gv-font-display: 'Caprasimo', 'Cooper Black', Georgia, serif;
+	--gv-font-body:    'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	--gv-fs-xs:  .8125rem;
+	--gv-fs-sm:  .9375rem;
+	--gv-fs-md:  1rem;
+	--gv-fs-lg:  1.3rem;
+	--gv-fs-xl:  clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem);
+	--gv-fs-2xl: clamp(2.1rem, 1.4rem + 2.8vw, 3.4rem);
+
+	/* Espacements (pas de 4px) */
+	--gv-space-1: .25rem;
+	--gv-space-2: .5rem;
+	--gv-space-3: .75rem;
+	--gv-space-4: 1rem;
+	--gv-space-5: 1.5rem;
+	--gv-space-6: 2rem;
+	--gv-space-7: 3rem;
+	--gv-space-8: 4rem;
+
+	/* Rayons : tous à 0. Mets une valeur ici pour ré-arrondir tout le site. */
+	--gv-radius-sm:   0;
+	--gv-radius-md:   0;
+	--gv-radius-lg:   0;
+	--gv-radius-pill: 0;
+
+	/* Bordures et ombres dures (aucun flou) */
+	--gv-border-w:     2px;
+	--gv-shadow-btn:   3px 3px 0 var(--gv-purple);
+	--gv-shadow-card:  6px 6px 0 var(--gv-purple);
+	--gv-shadow-pop:   4px 4px 0 var(--gv-purple);
+	--gv-shadow-soft:  0 10px 28px rgba(0, 0, 0, .5);   /* barre au défilement */
+	--gv-ring:         4px 4px 0 var(--gv-orange);      /* focus des champs */
+
+	/* Barre du haut */
+	--gv-blur: 10px;
+	--gv-header-alpha: .7;
+	--gv-nav-h: 5.5rem;
+
+	/* Mouvement */
+	--gv-ease: cubic-bezier(.2, .7, .2, 1);
+	--gv-dur:  .15s;
+}
+
+
+/* 2. PONT VERS BOOTSTRAP
+   ========================================================================== */
+:root,
+[data-bs-theme="dark"] {
+	--bs-body-font-family: var(--gv-font-body);
+	--bs-body-bg: var(--gv-bg);
+	--bs-body-bg-rgb: 35, 32, 33;
+	--bs-body-color: var(--gv-text);
+	--bs-body-color-rgb: 247, 234, 214;
+	--bs-emphasis-color: #fff4e3;
+	--bs-secondary-color: var(--gv-muted);
+	--bs-tertiary-bg: var(--gv-surface);
+	--bs-border-color: var(--gv-line);
+
+	--bs-primary: var(--gv-primary);
+	--bs-primary-rgb: 249, 106, 46;
+	--bs-danger: var(--gv-danger);
+	--bs-danger-rgb: 255, 107, 138;
+
+	--bs-link-color: var(--gv-link);
+	--bs-link-color-rgb: 239, 168, 108;
+	--bs-link-hover-color: var(--gv-link-hover);
+	--bs-link-hover-color-rgb: 255, 196, 141;
+
+	/* Aucun coin arrondi */
+	--bs-border-radius: 0;
+	--bs-border-radius-sm: 0;
+	--bs-border-radius-lg: 0;
+	--bs-border-radius-xl: 0;
+	--bs-border-radius-xxl: 0;
+	--bs-border-radius-2xl: 0;
+	--bs-border-radius-pill: 0;
+}
+
+/* Boutons : carrés, bordure épaisse, ombre dure qui s'écrase au clic */
+.btn {
+	--bs-btn-border-radius: 0;
+	--bs-btn-border-width: var(--gv-border-w);
+	--bs-btn-font-weight: 600;
+	--bs-btn-padding-x: 1.2rem;
+	--bs-btn-focus-box-shadow: 0 0 0 3px var(--gv-peach);
+	box-shadow: var(--gv-shadow-btn);
+	transition: transform var(--gv-dur) var(--gv-ease),
+	            box-shadow var(--gv-dur) var(--gv-ease),
+	            background-color var(--gv-dur) var(--gv-ease),
+	            color var(--gv-dur) var(--gv-ease);
+}
+
+.btn:hover {
+	transform: translate(-1px, -1px);
+	box-shadow: 4px 4px 0 var(--gv-purple);
+}
+
+.btn:active {
+	transform: translate(3px, 3px);
+	box-shadow: 0 0 0 var(--gv-purple);
+}
+
+.btn-primary {
+	--bs-btn-color: var(--gv-primary-ink);
+	--bs-btn-bg: var(--gv-primary);
+	--bs-btn-border-color: var(--gv-primary-ink);
+	--bs-btn-hover-color: var(--gv-primary-ink);
+	--bs-btn-hover-bg: var(--gv-primary-hover);
+	--bs-btn-hover-border-color: var(--gv-primary-ink);
+	--bs-btn-active-color: var(--gv-primary-ink);
+	--bs-btn-active-bg: var(--gv-primary-press);
+	--bs-btn-active-border-color: var(--gv-primary-ink);
+}
+
+.btn-outline-secondary {
+	--bs-btn-color: var(--gv-text);
+	--bs-btn-border-color: var(--gv-text);
+	--bs-btn-hover-color: var(--gv-text);
+	--bs-btn-hover-bg: var(--gv-surface-2);
+	--bs-btn-hover-border-color: var(--gv-text);
+	--bs-btn-active-color: var(--gv-text);
+	--bs-btn-active-bg: var(--gv-surface-2);
+	--bs-btn-active-border-color: var(--gv-text);
+}
+
+.btn-outline-danger {
+	--bs-btn-color: var(--gv-danger);
+	--bs-btn-border-color: var(--gv-danger);
+	--bs-btn-hover-color: #2a0812;
+	--bs-btn-hover-bg: var(--gv-danger);
+	--bs-btn-hover-border-color: var(--gv-danger);
+	--bs-btn-active-color: #2a0812;
+	--bs-btn-active-bg: var(--gv-danger);
+	--bs-btn-active-border-color: var(--gv-danger);
+	--bs-btn-disabled-color: var(--gv-danger);
+}
+
+/* Menus déroulants */
+.dropdown-menu {
+	--bs-dropdown-bg: var(--gv-surface);
+	--bs-dropdown-border-color: var(--gv-text);
+	--bs-dropdown-border-width: var(--gv-border-w);
+	--bs-dropdown-border-radius: 0;
+	--bs-dropdown-inner-border-radius: 0;
+	--bs-dropdown-padding-y: .35rem;
+	--bs-dropdown-link-color: var(--gv-text);
+	--bs-dropdown-link-hover-color: var(--gv-primary-ink);
+	--bs-dropdown-link-hover-bg: var(--gv-primary);
+	--bs-dropdown-link-active-color: var(--gv-primary-ink);
+	--bs-dropdown-link-active-bg: var(--gv-primary);
+	--bs-dropdown-divider-bg: var(--gv-line-strong);
+	box-shadow: var(--gv-shadow-pop);
+}
+
+.dropdown-menu .dropdown-item {
+	border-radius: 0;
+	width: calc(100% - .8rem); /* fonctionne pour <a> et <button> */
+	margin-inline: .4rem;
+	padding-inline: .8rem;
+	font-size: var(--gv-fs-sm);
+	font-weight: 600;
+}
+
+.dropdown-menu .dropdown-item.gv-item-danger {
+	color: var(--gv-danger);
+}
+
+
+/* 3. BASE
+   ========================================================================== */
+body {
+	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--gv-bg);
+	/* Voile sombre par-dessus l'image pour garder le texte lisible */
+	background-image:
+		linear-gradient(rgba(35, 32, 33, var(--gv-veil)), rgba(35, 32, 33, var(--gv-veil))),
+		url("background.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--gv-font-display);
+	font-weight: 400;          /* Caprasimo n'existe qu'en 400 : évite le faux gras */
+	letter-spacing: -.01em;
+	line-height: 1.1;
+}
+
+::selection {
+	background: var(--gv-primary);
+	color: var(--gv-primary-ink);
+}
+
+
+/* 4. BARRE DE NAVIGATION
+   Desktop : [ logo | recherche centrée | utilisateur ]
+   Mobile  : [ logo | utilisateur ] puis recherche pleine largeur dessous
+   Dessous : les 7 bandes de l'image
+   ========================================================================== */
+.gv-header {
+	z-index: 1030;
+	background: rgba(35, 32, 33, .92);
+	transition: box-shadow var(--gv-dur) var(--gv-ease);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+	.gv-header {
+		background: rgba(35, 32, 33, var(--gv-header-alpha));
+		backdrop-filter: blur(var(--gv-blur)) saturate(100%);
+	}
+}
+
+.gv-header::after {
+	content: "";
+	display: block;
+	height: var(--gv-stripe-h);
+	background: var(--gv-stripes);
+}
+
+.gv-header.is-scrolled {
+	box-shadow: var(--gv-shadow-soft);
+}
+
+.gv-nav {
+	display: grid;
+	grid-template-columns: minmax(max-content, 1fr) minmax(0, 36rem) minmax(max-content, 1fr);
+	grid-template-areas: "brand search user";
+	align-items: center;
+	column-gap: var(--gv-space-5);
+	min-height: var(--gv-nav-h);
+}
+
+/* Logo */
+.gv-brand {
+	grid-area: brand;
+	justify-self: start;
+	display: inline-flex;
+	align-items: center;
+	gap: .6rem;
+	margin-right: .2rem;
+	min-width: 0;
+	font-family: var(--gv-font-display);
+	font-weight: 400;
+	font-size: 1.7rem;
+	letter-spacing: -.01em;
+	color: var(--gv-text);
+	text-decoration: none;
+}
+
+.gv-brand span {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.gv-brand:hover {
+	color: var(--gv-text);
+}
+
+.gv-disc {
+	width: 4rem;
+	height: 4rem;
+	flex: none;
+	transition: transform .7s var(--gv-ease);
+}
+
+.gv-brand:hover .gv-disc {
+	transform: rotate(180deg);
+}
+
+.gv-disc__plate  { fill: var(--gv-surface); stroke: var(--gv-text); stroke-width: 1; }
+.gv-disc__groove { fill: none; stroke: var(--gv-surface-2); stroke-width: .8; }
+.gv-disc__label  { fill: var(--gv-orange); }
+.gv-disc__hole   { fill: var(--gv-bg); }
+.gv-disc__shine  { fill: none; stroke: var(--gv-text); stroke-opacity: .35; stroke-width: 1.2; stroke-linecap: round; }
+
+/* Recherche */
+.gv-search {
+	grid-area: search;
+	display: flex;
+	align-items: center;
+	gap: .65rem;
+	height: 2.75rem;
+	padding-inline: 1rem .55rem;
+	background: var(--gv-surface);
+	border: var(--gv-border-w) solid var(--gv-line-strong);
+	border-radius: 0;
+	transition: border-color var(--gv-dur) var(--gv-ease),
+	            box-shadow var(--gv-dur) var(--gv-ease),
+	            transform var(--gv-dur) var(--gv-ease);
+}
+
+.gv-search:hover {
+	border-color: var(--gv-text);
+}
+
+.gv-search:focus-within {
+	background: var(--gv-bg);
+	border-color: var(--gv-orange);
+	box-shadow: var(--gv-ring);
+	transform: translate(-2px, -2px);
+}
+
+.gv-search__icon {
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: none;
+	color: var(--gv-muted);
+	transition: color var(--gv-dur) var(--gv-ease);
+}
+
+.gv-search:focus-within .gv-search__icon {
+	color: var(--gv-orange);
+}
+
+.gv-search__input {
+	flex: 1;
+	min-width: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	outline: 0;
+	color: var(--gv-text);
+	font: inherit;
+	font-size: var(--gv-fs-sm);
+}
+
+.gv-search__input::placeholder {
+	color: var(--gv-muted);
+}
+
+.gv-search__input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.gv-kbd {
+	padding: .25rem .5rem;
+	border: 1px solid var(--gv-line-strong);
+	border-radius: 0;
+	background: transparent;
+	color: var(--gv-muted);
+	font: 600 .75rem/1 var(--gv-font-body);
+}
+
+/* Utilisateur */
+.gv-user {
+	grid-area: user;
+	justify-self: end;
+}
+
+.gv-user__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: .6rem;
+	padding: .3rem .8rem .3rem .3rem;
+	background: var(--gv-surface);
+	border: var(--gv-border-w) solid var(--gv-line-strong);
+	border-radius: 0;
+	color: var(--gv-text);
+	font-size: var(--gv-fs-sm);
+	font-weight: 600;
+	transition: background-color var(--gv-dur) var(--gv-ease),
+	            border-color var(--gv-dur) var(--gv-ease);
+}
+
+.gv-user__btn:hover,
+.gv-user__btn.show {
+	background: var(--gv-surface-2);
+	border-color: var(--gv-text);
+}
+
+.gv-avatar {
+	display: grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0;
+	background: var(--gv-accent);
+	color: var(--gv-accent-ink);
+	font-family: var(--gv-font-display);
+	font-weight: 400;
+	font-size: 1.05rem;
+	line-height: 1;
+}
+
+.gv-user__name {
+	max-width: 10rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+	.gv-nav {
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			"brand user"
+			"search search";
+		row-gap: .65rem;
+		padding-block: .7rem;
+		min-height: 0;
+	}
+}
+
+
+/* 5. COMPOSANTS RÉUTILISABLES
+   ========================================================================== */
+.gv-main {
+	padding-block: var(--gv-space-6) var(--gv-space-8);
+}
+
+.gv-page-title {
+	font-size: var(--gv-fs-2xl);
+	text-shadow: 3px 3px 0 var(--gv-purple);
+	margin-bottom: var(--gv-space-2);
+}
+
+.gv-section-title {
+	font-size: var(--gv-fs-xl);
+	margin-bottom: var(--gv-space-3);
+}
+
+.gv-subtle {
+	color: var(--gv-muted);
+}
+
+/* Fond solide + bordure épaisse + ombre dure. Couleur d'ombre : --gv-card-shadow */
+.gv-card {
+	--gv-card-shadow: var(--gv-purple);
+	background: var(--gv-surface);
+	border: var(--gv-border-w) solid var(--gv-line-strong);
+	border-radius: 0;
+	box-shadow: 6px 6px 0 var(--gv-card-shadow);
+	padding: var(--gv-space-5);
+}
+
+.gv-card--danger {
+	--gv-card-shadow: var(--gv-magenta);
+	border-color: var(--gv-danger);
+}
+
+.gv-card__title {
+	font-size: var(--gv-fs-lg);
+	margin-bottom: var(--gv-space-2);
+}
+
+/* Onglets en boîte : <ul class="nav gv-tabs"> avec des .nav-link, l'actif a .active */
+.gv-tabs {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	max-width: 100%;
+	overflow-x: auto;
+	background: var(--gv-surface);
+	border: var(--gv-border-w) solid var(--gv-text);
+	border-radius: 0;
+	box-shadow: 5px 5px 0 var(--gv-purple);
+}
+
+.gv-tabs .nav-item + .nav-item {
+	border-left: var(--gv-border-w) solid var(--gv-line-strong);
+}
+
+.gv-tabs .nav-link {
+	padding: .75rem 1.5rem;
+	border-radius: 0;
+	color: var(--gv-muted);
+	font-weight: 600;
+	white-space: nowrap;
+	transition: background-color var(--gv-dur) var(--gv-ease),
+	            color var(--gv-dur) var(--gv-ease);
+}
+
+.gv-tabs .nav-link:hover {
+	background: var(--gv-surface-2);
+	color: var(--gv-text);
+}
+
+.gv-tabs .nav-link.active {
+	background: var(--gv-primary);
+	color: var(--gv-primary-ink);
+}
+
+.gv-tabs .nav-link:focus-visible {
+	outline-offset: -4px;
+}
+
+
+/* 6. ACCESSIBILITÉ ET MOUVEMENT RÉDUIT
+   ========================================================================== */
+:focus-visible {
+	outline: 2px solid var(--gv-peach);
+	outline-offset: 2px;
+}
+
+.gv-search__input:focus-visible {
+	outline: 0; /* le focus est porté par le conteneur (.gv-search:focus-within) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		transition-duration: .01ms !important;
+		animation: none !important;
+	}
+
+	.gv-brand:hover .gv-disc,
+	.btn:hover,
+	.btn:active,
+	.gv-search:focus-within {
+		transform: none;
+	}
+}
