@@ -55,17 +55,17 @@ class UserController extends Controller
 	 */
 	public function updatePassword(Request $request) {
 		if ( !$request->filled(['newpassword','confirmpassword']) )
-			return to_route('view_formpassword')->with('message',"Some POST data are missing.");
+			return to_route('view_settings')->with('message',"Some POST data are missing.");
 
 		if ( $request->newpassword != $request->confirmpassword )
-			return to_route('view_formpassword')->with('message',"Error: passwords are different.");
+			return to_route('view_settings')->with('message',"Error: passwords are different.");
 
 		$request->user()->password = password_hash($request->newpassword,PASSWORD_DEFAULT);;
 		try {
 			$request->user()->save();
 		}
 		catch (\Exception $e) {
-			return to_route('view_formpassword')->with('message',"Password modification failed. Try again.");
+			return to_route('view_settings')->with('message',"Password modification failed. Try again.");
 		}
 
 		return to_route('view_account')->with('message',"Password successfully updated.");

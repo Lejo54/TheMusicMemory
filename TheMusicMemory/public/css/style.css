@@ -1,0 +1,615 @@
+:root {
+    /* Palette brute : les 7 bandes de l'image */
+    --tmm-purple: #59194d;
+    --tmm-magenta: #ac224b;
+    --tmm-orange: #f96a2e;
+    --tmm-peach: #efa86c;
+    --tmm-sage: #70a99b;
+    --tmm-teal: #518587;
+    --tmm-deep: #2a5e68;
+
+    /* Rôles : on utilise ces noms dans les pages, pas la palette brute */
+    --tmm-bg: #232021; /* fond de page (charbon) */
+    --tmm-surface: #2d2829; /* cartes, champs, menus */
+    --tmm-surface-2: #3b3435; /* survols, surfaces surélevées */
+    --tmm-text: #f7ead6; /* texte principal (crème) */
+    --tmm-muted: #b8aa9b; /* texte secondaire */
+
+    --tmm-primary: var(--tmm-peach); /* action principale, état actif */
+    --tmm-primary-hover: #ff834d;
+    --tmm-primary-press: #e0561b;
+    --tmm-primary-ink: #1f0d05; /* texte posé SUR l'orange */
+
+    --tmm-accent: var(--tmm-magenta); /* avatar, étiquette du disque */
+    --tmm-accent-ink: #fff4e3; /* texte posé SUR le magenta */
+
+    --tmm-link: var(--tmm-peach);
+    --tmm-link-hover: #ffc48d;
+
+    --tmm-danger: #ff6b8a; /* actions destructives uniquement */
+    --tmm-success: var(--tmm-sage);
+
+    --tmm-line: rgba(247, 234, 214, 0.16); /* séparateurs discrets */
+    --tmm-line-strong: rgba(247, 234, 214, 0.4); /* bordures de composants */
+
+    /* Bandes 70s : ordre de l'image, de haut en bas */
+    --tmm-stripe-h: 14px;
+    --tmm-stripes: linear-gradient(
+        to bottom,
+        var(--tmm-purple) 0 14.286%,
+        var(--tmm-magenta) 14.286% 28.571%,
+        var(--tmm-orange) 28.571% 42.857%,
+        var(--tmm-peach) 42.857% 57.143%,
+        var(--tmm-sage) 57.143% 71.429%,
+        var(--tmm-teal) 71.429% 85.714%,
+        var(--tmm-deep) 85.714% 100%
+    );
+
+    /* Fond d'écran : 0 = image nue, 1 = image masquée */
+    --tmm-veil: 0.6;
+
+    /* Typographie */
+    --tmm-font-display: "Caprasimo", "Cooper Black", Georgia, serif;
+    --tmm-font-body:
+        "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --tmm-fs-xs: 0.8125rem;
+    --tmm-fs-sm: 0.9375rem;
+    --tmm-fs-md: 1.1rem;
+    --tmm-fs-lg: 1.3rem;
+    --tmm-fs-xl: clamp(1.6rem, 1.2rem + 1.2vw, 2.1rem);
+    --tmm-fs-2xl: clamp(2.1rem, 1.4rem + 2.8vw, 3.4rem);
+
+    /* Espacements (pas de 4px) */
+    --tmm-space-1: 0.25rem;
+    --tmm-space-2: 0.5rem;
+    --tmm-space-3: 0.75rem;
+    --tmm-space-4: 1rem;
+    --tmm-space-5: 1.5rem;
+    --tmm-space-6: 2rem;
+    --tmm-space-7: 3rem;
+    --tmm-space-8: 4rem;
+
+    /* Rayons : tous à 0. Mets une valeur ici pour ré-arrondir tout le site. */
+    --tmm-radius-sm: 0;
+    --tmm-radius-md: 0;
+    --tmm-radius-lg: 0;
+    --tmm-radius-pill: 0;
+
+    /* Bordures et ombres dures (aucun flou) */
+    --tmm-border-w: 2px;
+    --tmm-shadow-btn: 3px 3px 0 var(--tmm-purple);
+    --tmm-shadow-card: 6px 6px 0 var(--tmm-purple);
+    --tmm-shadow-pop: 4px 4px 0 var(--tmm-purple);
+    --tmm-shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.5); /* barre au défilement */
+    --tmm-ring: 4px 4px 0 var(--tmm-orange); /* focus des champs */
+
+    /* Barre du haut */
+    --tmm-blur: 10px;
+    --tmm-header-alpha: 0.7;
+    --tmm-nav-h: 5.5rem;
+
+    /* Mouvement */
+    --tmm-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --tmm-dur: 0.15s;
+
+    --tmm-page-max: 1700px;
+    --tmm-page-pad: 4rem;
+}
+
+/* 2. PONT VERS BOOTSTRAP
+   ========================================================================== */
+:root,
+[data-bs-theme="dark"] {
+    --bs-body-font-family: var(--tmm-font-body);
+    --bs-body-bg: var(--tmm-bg);
+    --bs-body-bg-rgb: 35, 32, 33;
+    --bs-body-color: var(--tmm-text);
+    --bs-body-color-rgb: 247, 234, 214;
+    --bs-emphasis-color: #fff4e3;
+    --bs-secondary-color: var(--tmm-muted);
+    --bs-tertiary-bg: var(--tmm-surface);
+    --bs-border-color: var(--tmm-line);
+
+    --bs-primary: var(--tmm-primary);
+    --bs-primary-rgb: 249, 106, 46;
+    --bs-danger: var(--tmm-danger);
+    --bs-danger-rgb: 255, 107, 138;
+
+    --bs-link-color: var(--tmm-link);
+    --bs-link-color-rgb: 239, 168, 108;
+    --bs-link-hover-color: var(--tmm-link-hover);
+    --bs-link-hover-color-rgb: 255, 196, 141;
+
+    /* Coin carre */
+    --bs-border-radius: 0;
+    --bs-border-radius-sm: 0;
+    --bs-border-radius-lg: 0;
+    --bs-border-radius-xl: 0;
+    --bs-border-radius-xxl: 0;
+    --bs-border-radius-2xl: 0;
+    --bs-border-radius-pill: 0;
+}
+
+/* Boutons : carrés, bordure épaisse, ombre dure qui s'écrase au clic */
+.btn {
+    --bs-btn-border-radius: 0;
+    --bs-btn-border-width: var(--tmm-border-w);
+    --bs-btn-font-weight: 600;
+    --bs-btn-padding-x: 1.2rem;
+    --bs-btn-focus-box-shadow: 0 0 0 3px var(--tmm-peach);
+    box-shadow: var(--tmm-shadow-btn);
+    transition:
+        transform var(--tmm-dur) var(--tmm-ease),
+        box-shadow var(--tmm-dur) var(--tmm-ease),
+        background-color var(--tmm-dur) var(--tmm-ease),
+        color var(--tmm-dur) var(--tmm-ease);
+}
+
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--tmm-purple);
+}
+
+.btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--tmm-purple);
+}
+
+.btn-primary {
+    --bs-btn-color: var(--tmm-primary-ink);
+    --bs-btn-bg: var(--tmm-primary);
+    --bs-btn-border-color: var(--tmm-primary-ink);
+    --bs-btn-hover-color: var(--tmm-primary-ink);
+    --bs-btn-hover-bg: var(--tmm-primary-hover);
+    --bs-btn-hover-border-color: var(--tmm-primary-ink);
+    --bs-btn-active-color: var(--tmm-primary-ink);
+    --bs-btn-active-bg: var(--tmm-primary-press);
+    --bs-btn-active-border-color: var(--tmm-primary-ink);
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--tmm-text);
+    --bs-btn-border-color: var(--tmm-text);
+    --bs-btn-hover-color: var(--tmm-text);
+    --bs-btn-hover-bg: var(--tmm-surface-2);
+    --bs-btn-hover-border-color: var(--tmm-text);
+    --bs-btn-active-color: var(--tmm-text);
+    --bs-btn-active-bg: var(--tmm-surface-2);
+    --bs-btn-active-border-color: var(--tmm-text);
+}
+
+.btn-outline-danger {
+    --bs-btn-color: var(--tmm-danger);
+    --bs-btn-border-color: var(--tmm-danger);
+    --bs-btn-hover-color: #2a0812;
+    --bs-btn-hover-bg: var(--tmm-danger);
+    --bs-btn-hover-border-color: var(--tmm-danger);
+    --bs-btn-active-color: #2a0812;
+    --bs-btn-active-bg: var(--tmm-danger);
+    --bs-btn-active-border-color: var(--tmm-danger);
+    --bs-btn-disabled-color: var(--tmm-danger);
+}
+
+/* Menus déroulants */
+.dropdown-menu {
+    --bs-dropdown-bg: var(--tmm-surface);
+    --bs-dropdown-border-color: var(--tmm-text);
+    --bs-dropdown-border-width: var(--tmm-border-w);
+    --bs-dropdown-border-radius: 0;
+    --bs-dropdown-inner-border-radius: 0;
+    --bs-dropdown-padding-y: 0.35rem;
+    --bs-dropdown-link-color: var(--tmm-text);
+    --bs-dropdown-link-hover-color: var(--tmm-primary-ink);
+    --bs-dropdown-link-hover-bg: var(--tmm-primary);
+    --bs-dropdown-link-active-color: var(--tmm-primary-ink);
+    --bs-dropdown-link-active-bg: var(--tmm-primary);
+    --bs-dropdown-divider-bg: var(--tmm-line-strong);
+    box-shadow: var(--tmm-shadow-pop);
+}
+
+.dropdown-menu .dropdown-item {
+    border-radius: 0;
+    width: calc(100% - 0.8rem); /* fonctionne pour <a> et <button> */
+    margin-inline: 0.4rem;
+    padding-inline: 0.8rem;
+    font-size: var(--tmm-fs-sm);
+    font-weight: 600;
+}
+
+.dropdown-menu .dropdown-item.tmm-item-danger {
+    color: var(--tmm-danger);
+}
+
+/* 3. BASE
+   ========================================================================== */
+body {
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--tmm-bg);
+    /* Voile sombre par-dessus l'image pour garder le texte lisible */
+    background-image:
+        linear-gradient(
+            rgba(35, 32, 33, var(--tmm-veil)),
+            rgba(35, 32, 33, var(--tmm-veil))
+        ),
+        url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--tmm-font-display);
+    font-weight: 400; /* Caprasimo n'existe qu'en 400 : évite le faux gras */
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+}
+
+::selection {
+    background: var(--tmm-primary);
+    color: var(--tmm-primary-ink);
+}
+
+/* 4. BARRE DE NAVIGATION
+   Desktop : [ logo | recherche centrée | utilisateur ]
+   Mobile  : [ logo | utilisateur ] puis recherche pleine largeur dessous
+   Dessous : les 7 bandes de l'image
+   ========================================================================== */
+.tmm-header {
+    z-index: 1030;
+    background: rgba(35, 32, 33, 0.92);
+    transition: box-shadow var(--tmm-dur) var(--tmm-ease);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+    .tmm-header {
+        background: rgba(35, 32, 33, var(--tmm-header-alpha));
+        backdrop-filter: blur(var(--tmm-blur)) saturate(100%);
+    }
+}
+
+.tmm-header::after {
+    content: "";
+    display: block;
+    height: var(--tmm-stripe-h);
+    background: var(--tmm-stripes);
+}
+
+.tmm-header.is-scrolled {
+    box-shadow: var(--tmm-shadow-soft);
+}
+
+.tmm-nav {
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) minmax(0, 36rem) minmax(
+            max-content,
+            1fr
+        );
+    grid-template-areas: "brand search user";
+    align-items: center;
+    column-gap: var(--tmm-space-5);
+    min-height: var(--tmm-nav-h);
+}
+
+/* Logo */
+.tmm-brand {
+    grid-area: brand;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-right: 0.2rem;
+    min-width: 0;
+    font-family: var(--tmm-font-display);
+    font-weight: 400;
+    font-size: 1.7rem;
+    letter-spacing: -0.01em;
+    color: var(--tmm-text);
+    text-decoration: none;
+}
+
+.tmm-brand span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tmm-brand:hover {
+    color: var(--tmm-text);
+}
+
+.tmm-disc {
+    width: 4rem;
+    height: 4rem;
+    flex: none;
+    transition: transform 0.7s var(--tmm-ease);
+}
+
+.tmm-brand:hover .tmm-disc {
+    transform: rotate(180deg);
+}
+
+.tmm-disc__plate {
+    fill: var(--tmm-surface);
+    stroke: var(--tmm-text);
+    stroke-width: 1;
+}
+.tmm-disc__groove {
+    fill: none;
+    stroke: var(--tmm-surface-2);
+    stroke-width: 0.8;
+}
+.tmm-disc__label {
+    fill: var(--tmm-orange);
+}
+.tmm-disc__hole {
+    fill: var(--tmm-bg);
+}
+.tmm-disc__shine {
+    fill: none;
+    stroke: var(--tmm-text);
+    stroke-opacity: 0.35;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+}
+
+/* Recherche */
+.tmm-search {
+    grid-area: search;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    height: 2.75rem;
+    padding-inline: 1rem 0.55rem;
+    background: var(--tmm-surface);
+    border: var(--tmm-border-w) solid var(--tmm-line-strong);
+    border-radius: 0;
+    transition:
+        border-color var(--tmm-dur) var(--tmm-ease),
+        box-shadow var(--tmm-dur) var(--tmm-ease),
+        transform var(--tmm-dur) var(--tmm-ease);
+}
+
+.tmm-search:hover {
+    border-color: var(--tmm-text);
+}
+
+.tmm-search:focus-within {
+    background: var(--tmm-bg);
+    border-color: var(--tmm-orange);
+    box-shadow: var(--tmm-ring);
+    transform: translate(-2px, -2px);
+}
+
+.tmm-search__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    color: var(--tmm-muted);
+    transition: color var(--tmm-dur) var(--tmm-ease);
+}
+
+.tmm-search:focus-within .tmm-search__icon {
+    color: var(--tmm-orange);
+}
+
+.tmm-search__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--tmm-text);
+    font: inherit;
+    font-size: var(--tmm-fs-sm);
+}
+
+.tmm-search__input::placeholder {
+    color: var(--tmm-muted);
+}
+
+.tmm-search__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.tmm-kbd {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--tmm-line-strong);
+    border-radius: 0;
+    background: transparent;
+    color: var(--tmm-muted);
+    font: 600 0.75rem/1 var(--tmm-font-body);
+}
+
+/* Utilisateur */
+.tmm-user {
+    grid-area: user;
+    justify-self: end;
+}
+
+.tmm-user__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+    background: var(--tmm-surface);
+    border: var(--tmm-border-w) solid var(--tmm-line-strong);
+    border-radius: 0;
+    color: var(--tmm-text);
+    font-size: var(--tmm-fs-sm);
+    font-weight: 600;
+    transition:
+        background-color var(--tmm-dur) var(--tmm-ease),
+        border-color var(--tmm-dur) var(--tmm-ease);
+}
+
+.tmm-user__btn:hover,
+.tmm-user__btn.show {
+    background: var(--tmm-surface-2);
+    border-color: var(--tmm-text);
+}
+
+.tmm-avatar {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0;
+    background: var(--tmm-accent);
+    color: var(--tmm-accent-ink);
+    font-family: var(--tmm-font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.tmm-user__name {
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+    .tmm-nav {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand user"
+            "search search";
+        row-gap: 0.65rem;
+        padding-block: 0.7rem;
+        min-height: 0;
+    }
+}
+
+/* 5. COMPOSANTS RÉUTILISABLES
+   ========================================================================== */
+.tmm-main {
+    padding-block: var(--tmm-space-6) var(--tmm-space-8);
+}
+
+.tmm-page-title {
+    font-size: var(--tmm-fs-2xl);
+    text-shadow: 3px 3px 0 var(--tmm-purple);
+    margin-bottom: var(--tmm-space-2);
+}
+
+.tmm-section-title {
+    font-size: var(--tmm-fs-xl);
+    margin-bottom: var(--tmm-space-3);
+}
+
+.tmm-subtle {
+    color: var(--tmm-muted);
+}
+
+/* Fond solide + bordure épaisse + ombre dure. Couleur d'ombre : --tmm-card-shadow */
+.tmm-card {
+    --tmm-card-shadow: var(--tmm-purple);
+    background: var(--tmm-surface);
+    border: var(--tmm-border-w) solid var(--tmm-line-strong);
+    border-radius: 0;
+    box-shadow: 6px 6px 0 var(--tmm-card-shadow);
+    padding: var(--tmm-space-5);
+}
+
+.tmm-card--danger {
+    --tmm-card-shadow: var(--tmm-magenta);
+    border-color: var(--tmm-danger);
+}
+
+.tmm-card__title {
+    font-size: var(--tmm-fs-lg);
+    margin-bottom: var(--tmm-space-2);
+}
+
+/* Onglets en boîte */
+.tmm-tabs {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    background: var(--tmm-surface);
+    border: var(--tmm-border-w) solid var(--tmm-text);
+    border-radius: 0;
+    box-shadow: 5px 5px 0 var(--tmm-purple);
+	margin-inline:auto;
+}
+
+.tmm-tabs .nav-item + .nav-item {
+    border-left: var(--tmm-border-w) solid var(--tmm-line-strong);
+}
+
+.tmm-tabs .nav-link {
+    padding: 0.75rem 5.5rem;
+    border-radius: 0;
+    color: var(--tmm-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+        background-color var(--tmm-dur) var(--tmm-ease),
+        color var(--tmm-dur) var(--tmm-ease);
+	font-size: var(--tmm-fs-md);
+}
+
+.tmm-tabs .nav-link:hover {
+    background: var(--tmm-surface-2);
+    color: var(--tmm-text);
+}
+
+.tmm-tabs .nav-link.active {
+    background: var(--tmm-primary);
+    color: var(--tmm-primary-ink);
+}
+
+.tmm-tabs .nav-link:focus-visible {
+    outline-offset: -4px;
+}
+
+.tmm-nav,
+.tmm-main {
+    max-width: var(--tmm-page-max);
+    padding-inline: var(--tmm-page-pad);
+}
+
+/* 6. ACCESSIBILITÉ ET MOUVEMENT RÉDUIT
+   ========================================================================== */
+:focus-visible {
+    outline: 2px solid var(--tmm-peach);
+    outline-offset: 2px;
+}
+
+.tmm-search__input:focus-visible {
+    outline: 0; /* le focus est porté par le conteneur (.tmm-search:focus-within) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation: none !important;
+    }
+
+    .tmm-brand:hover .tmm-disc,
+    .btn:hover,
+    .btn:active,
+    .tmm-search:focus-within {
+        transform: none;
+    }
+}
