@@ -7,8 +7,8 @@
 
 	<section class="row g-4" aria-label="Paramètres du compte">
 		<div class="col-md-6">
-			<div class="gv-card h-100">
-				<h2 class="gv-card__title">Changer le mot de passe</h2>
+			<div class="tmm-card h-100">
+				<h2 class="tmm-card__title">Changer le mot de passe</h2>
 				<br action="{{ route('user_changepassword') }} " method="post" class="d-flex flex-wrap gap-2">
 				@csrf
 				<label for="newpassword">Nouveau mot de passe</label> <input type="password" id="newpassword"
@@ -21,9 +21,9 @@
 		</div>
 
 		<div class="col-md-6">
-			<div class="gv-card gv-card--danger h-100">
-				<h2 class="gv-card__title">Supprimer mon compte</h2>
-				<p class="gv-subtle">Ta collection et tes données seront effacées. Cette action est définitive.</p>
+			<div class="tmm-card tmm-card--danger h-100">
+				<h2 class="tmm-card__title">Supprimer mon compte</h2>
+				<p class="tmm-subtle">Ta collection et tes données seront effacées. Cette action est définitive.</p>
 				{{-- Suppression en DELETE --}}
 				<form method="POST" action="{{ route('user_deleteuser') }}">
 					@csrf

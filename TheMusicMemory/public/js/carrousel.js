@@ -89,7 +89,7 @@ let active = 0;
 
 const imgs = slides.map((s, i) => {
     const img = document.createElement("img");
-    img.className = "gv-slide";
+    img.className = "tmm-slide";
     img.src = s.src;
     img.alt = s.alt;
     img.tabIndex = 0;
@@ -125,10 +125,10 @@ function render() {
     const title = document.createElement("h2");
     title.textContent = s.title;
     const sub = document.createElement("p");
-    sub.className = "gv-caption__sub";
+    sub.className = "tmm-caption__sub";
     sub.textContent = s.subtitle;
     const meta = document.createElement("div");
-    meta.className = "gv-meta";
+    meta.className = "tmm-meta";
     meta.append(
         field("Année", s.year),
         field("Producteur", s.producer),

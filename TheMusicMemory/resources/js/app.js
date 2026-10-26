@@ -1,8 +1,8 @@
 (() => {
 	'use strict';
 
-	const header = document.querySelector('[data-gv-header]');
-	const search = document.querySelector('[data-gv-search]');
+	const header = document.querySelector('[data-tmm-header]');
+	const search = document.querySelector('[data-tmm-search]');
 
 	/* La barre prend une ombre dès qu'on fait défiler la page */
 	if (header) {

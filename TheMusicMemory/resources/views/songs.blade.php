@@ -5,10 +5,10 @@
 @section('content')
 
     <header class="mb-4">
-        <h1 class="gv-page-title">Collection de {{ request()->user()->login }}</h1>
+        <h1 class="tmm-page-title">Collection de {{ request()->user()->login }}</h1>
     </header>
 
-    <ul class="nav gv-tabs mb-5">
+    <ul class="nav tmm-tabs mb-5">
         <li class="nav-item">
             <a class="nav-link" href="{{ route('view_account') }}">Albums</a>
         </li>

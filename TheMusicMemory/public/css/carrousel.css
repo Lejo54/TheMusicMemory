@@ -1,16 +1,16 @@
-.gv-carousel {
+.tmm-carousel {
 	overflow-x: clip; /* évite le défilement horizontal sur mobile */
 }
 
 /* Scène 3D */
-.gv-carousel__stage {
+.tmm-carousel__stage {
 	position: relative;
 	width: 100%;
 	height: 340px;
 	perspective: 1000px;
 }
 
-.gv-slide {
+.tmm-slide {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -18,8 +18,8 @@
 	height: 260px;
 	margin: -130px 0 0 -130px;
 	object-fit: cover;
-	background: var(--gv-surface);
-	border: var(--gv-border-w) solid var(--gv-text);
+	background: var(--tmm-surface);
+	border: var(--tmm-border-w) solid var(--tmm-text);
 	border-radius: 0;
 	cursor: pointer;
 	transition:
@@ -30,45 +30,45 @@
 }
 
 /* Légende */
-.gv-caption {
+.tmm-caption {
 	text-align: center;
-	margin-top: var(--gv-space-6);
+	margin-top: var(--tmm-space-6);
 	min-height: 120px;
 }
 
-.gv-caption h2 {
-	font-size: var(--gv-fs-xl);
-	text-shadow: 3px 3px 0 var(--gv-purple);
+.tmm-caption h2 {
+	font-size: var(--tmm-fs-xl);
+	text-shadow: 3px 3px 0 var(--tmm-purple);
 }
 
-.gv-caption__sub {
-	margin: var(--gv-space-1) 0 var(--gv-space-4);
-	color: var(--gv-muted);
+.tmm-caption__sub {
+	margin: var(--tmm-space-1) 0 var(--tmm-space-4);
+	color: var(--tmm-muted);
 	font-style: italic;
 }
 
-.gv-meta {
+.tmm-meta {
 	display: flex;
 	justify-content: center;
-	gap: var(--gv-space-6);
-	font-size: var(--gv-fs-sm);
+	gap: var(--tmm-space-6);
+	font-size: var(--tmm-fs-sm);
 }
 
-.gv-meta span {
+.tmm-meta span {
 	display: block;
-	color: var(--gv-muted);
-	font-size: var(--gv-fs-xs);
+	color: var(--tmm-muted);
+	font-size: var(--tmm-fs-xs);
 }
 
 /* Boutons : ce sont des .btn .btn-outline-secondary, le style vient de style.css */
-.gv-carousel__nav {
+.tmm-carousel__nav {
 	display: flex;
 	justify-content: center;
-	gap: var(--gv-space-3);
-	margin-top: var(--gv-space-4);
+	gap: var(--tmm-space-3);
+	margin-top: var(--tmm-space-4);
 }
 
-.gv-carousel__nav .btn {
+.tmm-carousel__nav .btn {
 	display: grid;
 	place-items: center;
 	width: 3rem;
@@ -77,17 +77,17 @@
 	font-size: 1.2rem;
 }
 
-.gv-slide:focus-visible {
-	outline: 2px solid var(--gv-peach);
+.tmm-slide:focus-visible {
+	outline: 2px solid var(--tmm-peach);
 	outline-offset: 3px;
 }
 
 @media (max-width: 575.98px) {
-	.gv-carousel__stage {
+	.tmm-carousel__stage {
 		height: 280px;
 	}
 
-	.gv-slide {
+	.tmm-slide {
 		width: 200px;
 		height: 200px;
 		margin: -100px 0 0 -100px;
@@ -95,7 +95,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gv-slide {
+	.tmm-slide {
 		transition: none;
 	}
 }
