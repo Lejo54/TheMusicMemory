@@ -24,7 +24,7 @@
 	@include('shared.navbar')
 
 	{{-- Seule cette zone change d'une page à l'autre --}}
-	<main id="contenu" class="gv-main container-xxl">
+	<main id="contenu" class="tmm-main container-xxl">
 		@yield('content')
 	</main>
 
