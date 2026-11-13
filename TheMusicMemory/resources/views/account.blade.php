@@ -17,7 +17,7 @@
 			<a class="nav-link active" aria-current="page" href="{{ route('view_account') }}">Albums</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{ route('view_songs') }}">Mucis</a>
+			<a class="nav-link" href="{{ route('view_songs') }}">Musics</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="{{ route('view_wishlist') }}">Wishlist</a>
