@@ -1,20 +1,28 @@
 @extends('layouts.mainLayout')
 
-@section('title', 'Parametres')
+@section('title', 'Settings')
 
 @section('content')
-	<h2>Paramètres</h2>
+	<h2>Settings</h2>
 
 	<section class="row g-4" aria-label="Paramètres du compte">
 		<div class="col-md-6">
 			<div class="tmm-card h-100">
-				<h2 class="tmm-card__title">Changer le mot de passe</h2>
+				<h2 class="tmm-card__title">Change password</h2>
 				<br action="{{ route('user_changepassword') }} " method="post" class="d-flex flex-wrap gap-2">
 				@csrf
-				<label for="newpassword">Nouveau mot de passe</label> <input type="password" id="newpassword"
-					name="newpassword" required></br>
-				<label for="confirmpassword">Confirmer le mot de passe</label><input type="password" id="confirmpassword"
-					name="confirmpassword" required></br>
+
+				<div data-mdb-input-init class="form-outline mb-4">
+					<input type="text" type="password" id="newpassword" name="newpassword" required
+						class="form-control form-control-lg" />
+					<label class="form-label" for="newpassword" required autofocus>New password</label>
+				</div>
+
+				<div data-mdb-input-init class="form-outline mb-4">
+					<input type="password" type="password" id="confirmpassword" name="confirmpassword" required
+						class="form-control form-control-lg" />
+					<label class="form-label" for="confirmpassword">Comfirm new password</label>
+				</div>
 				<input type="submit" value="Change my password" class="btn btn-outline-secondary">
 				</form>
 			</div>
@@ -22,14 +30,14 @@
 
 		<div class="col-md-6">
 			<div class="tmm-card tmm-card--danger h-100">
-				<h2 class="tmm-card__title">Supprimer mon compte</h2>
-				<p class="tmm-subtle">Ta collection et tes données seront effacées. Cette action est définitive.</p>
+				<h2 class="tmm-card__title">Delete your account</h2>
+				<p class="tmm-subtle">Your collection and all your data will be deleted. This action is final.</p>
 				{{-- Suppression en DELETE --}}
 				<form method="POST" action="{{ route('user_deleteuser') }}">
 					@csrf
 					@method('DELETE')
 					<button class="btn btn-outline-danger" type="submit"
-						data-confirm="Supprimer définitivement ton compte ?">Supprimer mon compte</button>
+						data-confirm="Supprimer définitivement ton compte ?">Delete my account</button>
 				</form>
 			</div>
 		</div>
