@@ -16,6 +16,7 @@
 			<span>The Music Memory</span>
 		</a>
 
+		{{-- Barre de recherche --}}
 		<form class="tmm-search" role="search" action="#" method="get">
 			<label class="visually-hidden" for="tmm-q">Search</label>
 			<svg class="tmm-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -23,8 +24,10 @@
 				<circle cx="11" cy="11" r="7" />
 				<path d="m20 20-3.5-3.5" />
 			</svg>
-			<input id="tmm-q" name="q" type="search" class="tmm-search__input"
-				placeholder="Search an album, an artist…" autocomplete="off" data-tmm-search>
+			<input id="tmm-q" name="q" type="search" class="tmm-search__input" placeholder="Search an album, an artist…"
+				autocomplete="off" data-tmm-search>
+			<span class="tmm-kbd__img"
+				style="--img-idle: url('{{ asset('img/steve2.gif') }}'); --img-focus: url('{{ asset('img/steve.gif') }}');"></span>
 		</form>
 
 		{{-- Utilisateur --}}
