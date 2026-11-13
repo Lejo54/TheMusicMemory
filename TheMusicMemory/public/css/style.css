@@ -447,8 +447,8 @@ h6 {
 
 .tmm-search:focus-within .tmm-kbd__img {
     background-image: var(--img-focus);
-    width: 3rem;
-    height: 3rem;
+    width: 3.2rem;
+    height: 3.2rem;
 }
 
 .tmm-search__input::-webkit-search-cancel-button {
