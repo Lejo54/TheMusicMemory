@@ -17,15 +17,14 @@
 		</a>
 
 		<form class="tmm-search" role="search" action="#" method="get">
-			<label class="visually-hidden" for="tmm-q">Rechercher</label>
+			<label class="visually-hidden" for="tmm-q">Search</label>
 			<svg class="tmm-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
 				stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
 				<circle cx="11" cy="11" r="7" />
 				<path d="m20 20-3.5-3.5" />
 			</svg>
 			<input id="tmm-q" name="q" type="search" class="tmm-search__input"
-				placeholder="Rechercher un album, un artiste…" autocomplete="off" data-tmm-search>
-			<kbd class="tmm-kbd d-none d-md-inline" aria-hidden="true">/</kbd>
+				placeholder="Search an album, an artist…" autocomplete="off" data-tmm-search>
 		</form>
 
 		{{-- Utilisateur --}}
@@ -37,8 +36,8 @@
 					<span class="tmm-user__name d-none d-sm-inline">{{ $user->login }}</span>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-end">
-					<li><a class="dropdown-item" href="{{ route('view_account') }}">Ma collection</a></li>
-					<li><a class="dropdown-item" href="{{ route('view_settings') }}">Paramètres</a></li>
+					<li><a class="dropdown-item" href="{{ route('view_account') }}">My collection</a></li>
+					<li><a class="dropdown-item" href="{{ route('view_settings') }}">Settings</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>
@@ -46,14 +45,14 @@
 						{{-- Déconnexion en POST --}}
 						<form method="POST" action="{{ route('user_signout') }}">
 							@csrf
-							<button class="dropdown-item" type="submit">Se déconnecter</button>
+							<button class="dropdown-item" type="submit">Log out</button>
 						</form>
 					</li>
 				</ul>
 			@else
 				<div class="d-flex gap-2">
-					<a class="btn btn-outline-secondary" href="{{ route('view_signin') }}">Se connecter</a>
-					<a class="btn btn-primary d-none d-sm-inline-block" href="{{ route('view_signup') }}">Créer un compte</a>
+					<a class="btn btn-outline-secondary" href="{{ route('view_signin') }}">Login</a>
+					<a class="btn btn-primary d-none d-sm-inline-block" href="{{ route('view_signup') }}">Sign Up</a>
 				</div>
 			@endif
 		</div>

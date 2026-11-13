@@ -78,9 +78,9 @@
 
     /* Bordures et ombres dures (aucun flou) */
     --tmm-border-w: 2px;
-    --tmm-shadow-btn: 3px 3px 0 var(--tmm-purple);
-    --tmm-shadow-card: 6px 6px 0 var(--tmm-purple);
-    --tmm-shadow-pop: 4px 4px 0 var(--tmm-purple);
+    --tmm-shadow-btn: 3px 3px 0 var(--tmm-magenta);
+    --tmm-shadow-card: 6px 6px 0 var(--tmm-magenta);
+    --tmm-shadow-pop: 4px 4px 0 var(--tmm-magenta);
     --tmm-shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.5); /* barre au défilement */
     --tmm-ring: 4px 4px 0 var(--tmm-orange); /* focus des champs */
 
@@ -219,6 +219,12 @@
 
 .dropdown-menu .dropdown-item.tmm-item-danger {
     color: var(--tmm-danger);
+}
+
+.card {
+    border: var(--tmm-border-w) solid var(--tmm-line-strong);
+    border-radius: 0 !important;
+        box-shadow: var(--tmm-shadow-pop);
 }
 
 /* 3. BASE
@@ -427,15 +433,6 @@ h6 {
     appearance: none;
 }
 
-.tmm-kbd {
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--tmm-line-strong);
-    border-radius: 0;
-    background: transparent;
-    color: var(--tmm-muted);
-    font: 600 0.75rem/1 var(--tmm-font-body);
-}
-
 /* Utilisateur */
 .tmm-user {
     grid-area: user;
@@ -548,7 +545,7 @@ h6 {
     border: var(--tmm-border-w) solid var(--tmm-text);
     border-radius: 0;
     box-shadow: 5px 5px 0 var(--tmm-purple);
-	margin-inline:auto;
+    margin-inline: auto;
 }
 
 .tmm-tabs .nav-item + .nav-item {
@@ -564,7 +561,7 @@ h6 {
     transition:
         background-color var(--tmm-dur) var(--tmm-ease),
         color var(--tmm-dur) var(--tmm-ease);
-	font-size: var(--tmm-fs-md);
+    font-size: var(--tmm-fs-md);
 }
 
 .tmm-tabs .nav-link:hover {
