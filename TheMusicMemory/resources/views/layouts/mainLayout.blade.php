@@ -10,6 +10,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Instrument+Sans:wght@400;500;600&display=swap"
 		rel="stylesheet">
+	{{-- Précharge le fond --}}
+	<link rel="preload" as="image" href="{{ asset('css/background.jpg') }}" fetchpriority="high">
 
 	{{-- Bootstrap + feuille de style surcharge --}}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
