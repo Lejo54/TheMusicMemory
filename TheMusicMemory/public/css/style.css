@@ -600,6 +600,8 @@ h6 {
 .tmm-tabs .nav-link.active {
     background: var(--tmm-primary);
     color: var(--tmm-primary-ink);
+    pointer-events: none;
+    cursor: default;
 }
 
 .tmm-tabs .nav-link:focus-visible {
