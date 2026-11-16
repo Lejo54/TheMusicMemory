@@ -240,10 +240,15 @@ body {
             rgba(35, 32, 33, var(--tmm-veil)),
             rgba(35, 32, 33, var(--tmm-veil))
         ),
-        url("background.jpg");
+        url("background-compressed.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+}
+
+body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
 }
 
 main {
