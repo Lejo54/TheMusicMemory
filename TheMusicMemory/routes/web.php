@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthenticateMyUser;
+use App\Http\Controllers\AlbumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +32,10 @@ Route::prefix('user')->middleware(AuthenticateMyUser::class)->group(function () 
 	Route::post('/changepassword', [UserController::class, 'updatePassword'])->name('user_changepassword');
 	Route::delete('/deleteuser', [UserController::class, 'delete'])->name('user_deleteuser');
 	Route::post('/signout', [UserController::class, 'disconnect'])->name('user_signout');
+});
+
+Route::prefix('spotify')->group(function () {
+    Route::get('artists', [AlbumController::class, 'searchArtists']);
+    Route::get('artists/{id}/albums', [AlbumController::class, 'artistAlbums']);
+    Route::get('albums/{id}', [AlbumController::class, 'album']);
 });

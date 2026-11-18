@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'spotify' => [
+        'client_id' => env('SPOTIFY_CLIENT_ID'),
+        'client_secret' => env('SPOTIFY_CLIENT_SECRET'),
+        'market' => env('SPOTIFY_MARKET', 'CA'),
+        'cache_ttl' => 3600,
+    ],
+
 ];
