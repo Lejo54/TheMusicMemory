@@ -42,7 +42,6 @@ class CatalogClient
                 'q' => $name,
                 'type' => 'artist',
                 'limit' => $limit,
-                'market' => $this->market,
             ]);
 
             return collect($data['artists']['items'] ?? [])->map(fn(array $a) => [
@@ -53,6 +52,57 @@ class CatalogClient
                 'spotify_url' => $a['external_urls']['spotify'] ?? null,
             ])->all();
         });
+    }
+
+    /**
+     * Search albums on Spotify by title, optionally narrowed by artist name.
+     *
+     * - Without $artist : free-text search (Spotify looks in every field).
+     * - With $artist    : uses the field filters album:"..." artist:"...".
+     * - /search is capped at 10 results per call (page with $offset).
+     *
+     * @return Album[]
+     */
+    public function searchAlbums(string $title, ?string $artist = null, int $limit = 10, int $offset = 0): array
+    {
+        $limit = min(max($limit, 1), 10);
+        $offset = min(max($offset, 0), 1000 - $limit); // conservative: offset + limit <= 1000
+
+        $query = $this->buildAlbumQuery($title, $artist);
+        $key = 'spotify:search-album:' . md5(mb_strtolower($query)) . ":{$limit}:{$offset}:{$this->market}";
+
+        // The cache keeps the RAW Spotify items (stable format).
+        // Album objects are built AFTER the cache, so changing the Album class never breaks cached data.
+        $items = Cache::remember($key, $this->cacheTtl, function () use ($query, $limit, $offset) {
+            $data = $this->get('/search', [
+                'q' => $query,
+                'type' => 'album',
+                'limit' => $limit,
+                'offset' => $offset,
+                'market' => $this->market,
+            ]);
+
+            return $data['albums']['items'] ?? [];
+        });
+
+        // array_filter: defensive, ignores any null entry in the list
+        return array_map(fn(array $a) => Album::fromSpotify($a), array_values(array_filter($items)));
+    }
+
+    /**
+     * Builds the "q" parameter. Double quotes are removed from user input
+     * so they cannot break the album:"..." artist:"..." filters.
+     */
+    private function buildAlbumQuery(string $title, ?string $artist): string
+    {
+        $clean = fn(string $value) => trim(str_replace('"', '', $value));
+
+        $title = $clean($title);
+        $artist = $artist !== null ? $clean($artist) : '';
+
+        return $artist === ''
+            ? $title
+            : 'album:"' . $title . '" artist:"' . $artist . '"';
     }
 
     /* 

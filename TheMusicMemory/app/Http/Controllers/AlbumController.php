@@ -26,6 +26,22 @@ class AlbumController extends Controller
         return $this->respond(fn() => $this->spotify->searchArtists($data['name']));
     }
 
+    public function searchAlbums(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'title' => ['required', 'string', 'min:2', 'max:100'],
+            'artist' => ['nullable', 'string', 'max:100'],
+            'offset' => ['nullable', 'integer', 'min:0', 'max:990'],
+        ]);
+
+        return $this->respond(fn() => $this->spotify->searchAlbums(
+            $data['title'],
+            $data['artist'] ?? null,
+            10,
+            (int) ($data['offset'] ?? 0)
+        ));
+    }
+
     /**
      * Centralize error management
      * @param Closure $callback

@@ -38,4 +38,5 @@ Route::prefix('spotify')->group(function () {
     Route::get('artists', [AlbumController::class, 'searchArtists']);
     Route::get('artists/{id}/albums', [AlbumController::class, 'artistAlbums']);
     Route::get('albums/{id}', [AlbumController::class, 'album']);
+		Route::get('albums', [AlbumController::class, 'searchAlbums']);
 });
